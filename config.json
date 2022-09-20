@@ -1,57 +1,42 @@
 {
-    "General": [
-        {
-            "id_len": 4,
-            "name_len": 16
-        }
-    ],
-    "Commit": [
-        {
-            "author": null,
-            "mesage": null,
-            "tag": null
-        }
-    ],
-    "Paths": [
-        {
-            "check": null,
-            "fs_path": null,
-            "repo_path": null,
-            "ftp_path": null,
-            "smb_path": null
-        }
-    ],
-    "Protocols": [   
-        {
-            "protocol": "FTP",
-            "account_details": [
-                {
-                    "username": null,
-                    "password": null
-                }
-            ]
+    "General": {
+        "id_len": 4,
+        "name_len": 16
+    },
+    "Commit": {
+        "author": null,
+        "message": null,
+        "tag": null
+    },
+    "Paths": {
+        "check": null,
+        "fs_path": null,
+        "repo_path": null,
+        "ftp_path": null,
+        "smb_path": null
+    },
+    "Protocols": {
+        "FTP": {
+            "details": {
+                "username": null,
+                "password": null
+            }
         },
-        {
-            "protocol": "SMB",
-            "account_details": [
-                {
-                    "username": null,
-                    "password": null,
-                    "domain": null
-                }
-            ]
+        "SMB": {
+            "details": {
+                "username": null,
+                "password": null,
+                "domain": null
+            }
         },
-        {
-            "protocol": "SCP",
-            "account_details": [
-                {
-                    "username": null,
-                    "source": null,
-                    "source_host": null,
-                    "destination": null,
-                    "destination_host": null
-                }
-            ]
+        "SCP": {
+            "details": {
+                "username": null,
+                "source": null,
+                "source_host": null,
+                "destination": null,
+                "destination_host": null
+            }
         }
-    ]
+    }
 }
