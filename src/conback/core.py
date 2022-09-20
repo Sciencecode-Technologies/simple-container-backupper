@@ -19,4 +19,3 @@ class ConbackCore:
     def __get_config_file(self):
         with open(self.__config_file_name) as config_file:
             self.config = json.load(config_file)
-        # Reading JSON config file
