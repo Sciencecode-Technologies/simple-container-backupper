@@ -4,5 +4,6 @@
 ![Lines of code](https://img.shields.io/tokei/lines/github/Sciencecode-Technologies/simple-container-backupper)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Sciencecode-Technologies/simple-container-backupper)
 ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/w/Sciencecode-Technologies/simple-container-backupper)
+![GitHub issues](https://img.shields.io/github/issues/Sciencecode-Technologies/simple-container-backupper)
 
 Container backup program for Docker.
