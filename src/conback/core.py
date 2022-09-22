@@ -17,6 +17,7 @@ class ConbackCore:
         self.__docker_client = docker.from_env()
         self.active_containers = []
         self.images = []
+        self.selected_containers = []
         # Defindings
         self.__get_config_file()
 
@@ -48,3 +49,17 @@ class ConbackCore:
         for image in images:
             self.images.append((image.id, image.tags[0].split(':')))
         return self.images
+
+    def select_containers(self, selections: str):
+        """
+        returns: list
+
+        Gets containers hash
+        """
+        __selections = selections.split(' ')
+        for container_index in range(len(self.active_containers)):
+            for selected_id in __selections:
+                if selected_id in self.active_containers[container_index][0][:self.config['General']['id_len']]:
+                    if selected_id not in self.selected_containers:
+                        self.selected_containers.append(self.__docker_client.containers.list()[container_index])
+        return self.selected_containers

@@ -1,4 +1,4 @@
-""" All Config flies tests"""
+""" package tests"""
 from conback.core import ConbackCore
 import pytest
 
