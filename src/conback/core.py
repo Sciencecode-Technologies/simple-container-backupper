@@ -18,6 +18,7 @@ class ConbackCore:
         self.active_containers = []
         self.images = []
         self.selected_containers = []
+        self.containers = self.__docker_client.containers.list()
         # Defindings
         self.__get_config_file()
 
@@ -34,8 +35,7 @@ class ConbackCore:
 
         Lists active docker containers
         """
-        containers = self.__docker_client.containers.list()
-        for container in containers:
+        for container in self.containers:
             self.active_containers.append((container.id, container.name))
         return self.active_containers
 
@@ -53,13 +53,20 @@ class ConbackCore:
     def select_containers(self, selections: str):
         """
         returns: list
+        attribute:
+            - selections: str
 
         Gets containers hash
         """
-        __selections = selections.split(' ')
-        for container_index in range(len(self.active_containers)):
-            for selected_id in __selections:
-                if selected_id in self.active_containers[container_index][0][:self.config['General']['id_len']]:
+        id_len = self.config['General']['id_len']
+        active_container_data = {
+            "active_containers": self.active_containers,
+            "ac_len": len(self.active_containers)
+        }
+        # locals
+        for container_index in range(active_container_data['ac_len']):
+            for selected_id in selections.split(' '):
+                if selected_id in self.active_containers[container_index][0][:id_len]:
                     if selected_id not in self.selected_containers:
-                        self.selected_containers.append(self.__docker_client.containers.list()[container_index])
+                        self.selected_containers.append(self.containers[container_index])
         return self.selected_containers
