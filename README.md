@@ -6,6 +6,7 @@
 ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/w/Sciencecode-Technologies/simple-container-backupper)
 ![GitHub issues](https://img.shields.io/github/issues/Sciencecode-Technologies/simple-container-backupper)
 ![GitHub](https://img.shields.io/github/license/Sciencecode-Technologies/simple-container-backupper)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/Sciencecode-Technologies/simple-container-backupper)
 
 ![GitHub](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 
