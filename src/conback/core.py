@@ -15,9 +15,9 @@ class ConbackCore:
         self.__config_file_name = config_file_name
 
         self.__docker_client = docker.from_env()
-        self.active_containers = []
-        self.images = []
-        self.selected_containers = []
+        self.active_containers: list = []
+        self.images: list = []
+        self.selected_containers: list = []
         self.containers = self.__docker_client.containers.list()
         # Defindings
         self.__get_config_file()
@@ -63,10 +63,30 @@ class ConbackCore:
             "active_containers": self.active_containers,
             "ac_len": len(self.active_containers)
         }
-        # locals
         for container_index in range(active_container_data['ac_len']):
+            # MYPY -> No overload variant of "range" matches argument type "object
             for selected_id in selections.split(' '):
                 if selected_id in self.active_containers[container_index][0][:id_len]:
                     if selected_id not in self.selected_containers:
                         self.selected_containers.append(self.containers[container_index])
         return self.selected_containers
+
+    def export_filesystem(self, container_names: list, make_tar: bool = True):
+        """
+        returns: list
+        attributes:
+            - container_name: list
+            - make_tar: bool
+
+        Exports selected containers filesystem.
+        """
+        exported: list = []
+        for ac_i in range(len(self.active_containers)):
+            # get file path
+            if container_names in self.__docker_client.containers.list()[ac_i].names:
+                if make_tar:
+                    with open(self.active_containers[ac_i][1]+".tar", "wb", encoding="UTF-8") as tarfile:
+                        for chunk in self.__docker_client.containers.list()[ac_i].export():
+                            tarfile.write(chunk)
+                        exported.append(self.containers[ac_i][1])
+        return exported

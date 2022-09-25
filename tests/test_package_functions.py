@@ -7,7 +7,6 @@ import pytest
 def test_id_len():
     assert ConbackCore().config['General']['id_len'] == 4
 
-
 @pytest.mark.length
 def test_name_len():
     assert ConbackCore().config['General']['name_len'] == 16
