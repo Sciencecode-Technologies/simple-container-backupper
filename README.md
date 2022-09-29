@@ -8,6 +8,8 @@
 ![GitHub](https://img.shields.io/github/license/Sciencecode-Technologies/simple-container-backupper)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/Sciencecode-Technologies/simple-container-backupper)
 
-![GitHub](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+| Platform |
+|----------|
+|![GitHub](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)|
 
 Container backup program for Docker.
