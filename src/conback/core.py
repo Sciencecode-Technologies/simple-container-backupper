@@ -64,7 +64,7 @@ class ConbackCore:
             "ac_len": len(self.active_containers)
         }
         for container_index in range(active_container_data['ac_len']):
-            # MYPY -> No overload variant of "range" matches argument type "object
+            # MYPY->No overload variant of "range" matches argument type object
             for selected_id in selections.split(' '):
                 if selected_id in self.active_containers[container_index][0][:id_len]:
                     if selected_id not in self.selected_containers:
@@ -90,3 +90,16 @@ class ConbackCore:
                             tarfile.write(chunk)
                         exported.append(self.containers[ac_i][1])
         return exported
+
+    def create_backup(self):
+        """
+        returns: list
+        attributes:
+        """
+        committed: list = []
+        for container in self.select_containers:
+            committed.append(container.commit(repository=container.name, tag=self.config['Commit']['tag']))
+        if not len(committed) > 0:
+            return committed
+        else:
+            return False
