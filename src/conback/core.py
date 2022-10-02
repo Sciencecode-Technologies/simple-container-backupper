@@ -103,3 +103,23 @@ class ConbackCore:
             return committed
         else:
             return False
+
+    def save_backups(self, rmi: bool = True):
+        """
+        exports backups
+        Keyword arguments:
+        rmi: bool --
+        Return: list
+        """
+        __s, __c = False, -1
+        committeds_status = [False for i in range(len(self.__committeds))]
+        for backup_img in self.__committeds:
+            with open(backup_img.tags[0].split(':')[0]+".tar", "wb") as tarfile:
+                __c = __c+1
+                for chunk in backup_img.save():
+                    if tarfile.write(chunk):
+                        __s = True
+            committeds_status[__c] = __s
+            if rmi:
+                backup_img.remove()
+        return committeds_status
