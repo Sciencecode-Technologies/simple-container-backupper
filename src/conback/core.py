@@ -112,8 +112,9 @@ class ConbackCore:
         Return: list
         """
         __s, __c = False, -1
-        committeds_status = [False for i in range(len(self.__committeds))]
-        for backup_img in self.__committeds:
+        committeds: list = self.create_backup()
+        committeds_status = [False for i in range(len(committeds))]
+        for backup_img in committeds:
             with open(backup_img.tags[0].split(':')[0]+".tar", "wb") as tarfile:
                 __c = __c+1
                 for chunk in backup_img.save():
